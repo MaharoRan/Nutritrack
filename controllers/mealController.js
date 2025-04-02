@@ -18,4 +18,17 @@ const createMeal=asyncHandler(async(req,res)=>{
     res.json(meal);
 })
 
-module.exports={getMeal,createMeal};
+const deleteMeal = asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    
+    const meal = await Meal.findById(id);
+    if (!meal) {
+        res.status(404);
+        throw new Error("Repas non trouvé");
+    }
+
+    await meal.remove();
+    res.json({ message: "Repas supprimé avec succès" });
+});
+
+module.exports={getMeal,createMeal,deleteMeal};

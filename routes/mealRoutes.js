@@ -1,10 +1,12 @@
 const express=require("express");
 const router=express.Router();
-const {getMeal,createMeal}=require("../controllers/mealController");
+const {getMeal,createMeal,deleteMeal}=require("../controllers/mealController");
 
 router.route('/').get(getMeal);
 
-router.route('/').post(createMeal);
+router.post('/', createMeal);
+
+router.delete('/:id', deleteMeal);
 
 
 module.exports=router;
