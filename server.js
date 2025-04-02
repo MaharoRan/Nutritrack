@@ -8,6 +8,13 @@ const app=express();
 
 const port=process.env.PORT;
 
+app.use(express.static('public'));
+
+
+app.get('/meal', (req, res) => {
+    res.sendFile(__dirname + '/public/meal.html');
+});
+
 app.use(express.json());
 app.use('/meals', require('./routes/mealRoutes'));
 app.use('/goals', require('./routes/goalRoutes'));
