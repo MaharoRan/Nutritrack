@@ -145,3 +145,21 @@ input {
     text-align: center;
     text-decoration: none;
 }
+
+.progress-bar {
+    width: 30%;
+    background-color: #f3f3f3;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.progress-bar-fill {
+    height: 12px;
+}
+
+.progress-bar-label {
+    font-size: 0.8em;
+    color: black;
+    margin-top: 4px;
+}
