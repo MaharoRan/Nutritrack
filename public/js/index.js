@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         nutrients.map(nutrient => {
             const element = totals[nutrient];
             const value = calculateNutrientTotal(meals, nutrient);
-            const unit = nutrient !== 'calories' ? 'g' : '';//Vérifier si le nutriment est calorie, si non ajout de g sinon ce sera une chaine vide
+            const unit = nutrients.filter(n => n !== 'calories').includes(nutrient) ? 'g' : '';
             updateElementText(element, `${value}${unit}`);
         });
     };
