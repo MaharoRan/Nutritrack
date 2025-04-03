@@ -52,9 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
             progressBarElements[nutrient].label.textContent = label;
     
             //Affichage de la barre de progression
-            if (percentage >= 100) {
+            if ( percentage >= 100) {
                 progressBarElements[nutrient].bar.style.backgroundColor = 'green';
-            } else {
+            } 
+            else {
                 progressBarElements[nutrient].bar.style.backgroundColor = 'red';
             }
         });

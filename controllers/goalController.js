@@ -11,7 +11,7 @@ const createGoal=asyncHandler(async(req,res)=>{
 
     if (!calories || !proteines || !glucides || !lipides) {
         res.status(400);
-        throw new Error("Please provide all the required fields: calories, proteines, glucides, lipides.");
+        throw new Error("All Fields are mandaatory");
     }
 
     const goal= await Goal.create({
