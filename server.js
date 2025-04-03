@@ -23,6 +23,10 @@ app.get('/meal', (req, res) => {
     res.sendFile(__dirname + '/public/meal.html');
 });
 
+app.get('/goal', (req, res) => {
+    res.sendFile(__dirname + '/public/goal.html');
+});
+
 app.post('/meals', (req, res) => {
     res.sendFile(__dirname + '/public/meals.html');
 });

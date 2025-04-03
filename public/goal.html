@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutritrack </title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <h1>Nutritrack</h1>
+        </div>
+        <div class="nav-links">
+            <a href="/" class="nav-link active">Tableau de bord</a>
+            <a href="/meal" class="nav-link">Gestion des repas</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>L'Objectif en cours</h1>
+        
+        <button id="addGoalBtn" class="btn-primary">Définir un objectif</button>
+
+        <div id="goalsList" class="meals-container">
+            
+        </div>
+
+        
+        <div id="goalFormModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Ajouter un repas</h2>
+                <form id="goalForm">
+                    <div class="form-group">
+                        <label for="calories">Calories:</label>
+                        <input type="number" id="calories" name="calories" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="proteins">Protéines (g):</label>
+                        <input type="number" id="proteines" name="proteines" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="carbs">Glucides (g):</label>
+                        <input type="number" id="glucides" name="glucides" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fats">Lipides (g):</label>
+                        <input type="number" id="lipides" name="lipides" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Ajouter</button>
+</form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/goal.js"></script>
+</body>
+</html>

@@ -1,10 +1,10 @@
 const asyncHandler=require("express-async-handler");
 const Goal= require("../models/goalModel");
 
-const getGoal=asyncHandler(async(req,res)=>{
-    const goals= await Goal.find();
-    res.json(goals);
-})
+const getGoal = asyncHandler(async (req, res) => {
+    const goal = await Goal.findOne().sort('-createdAt');
+    res.json(goal);
+});
 
 const createGoal=asyncHandler(async(req,res)=>{
     const { calories, proteines, glucides, lipides } = req.body;

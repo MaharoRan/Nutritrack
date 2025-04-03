@@ -1,4 +1,4 @@
-// public/js/utils.js
+
 export const compose = (f, g) => x => f(g(x));
 
 export const calculateNutrientTotal = (meals, nutrient) => 
