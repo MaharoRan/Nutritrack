@@ -9,13 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const updateTotals = (meals) => {
-        const updateTotal = (elementId, nutrient) => 
-            updateElementText(totals[elementId], `${calculateNutrientTotal(meals, nutrient)}${nutrient !== 'calories' ? 'g' : ''}`);
-
-        updateTotal('calories', 'calories');
-        updateTotal('proteines', 'proteines');
-        updateTotal('glucides', 'glucides');
-        updateTotal('lipides', 'lipides');
+        const nutrients = ['calories', 'proteines', 'glucides', 'lipides'];
+        
+        nutrients.map(nutrient => {
+            const element = totals[nutrient];
+            const value = calculateNutrientTotal(meals, nutrient);
+            const unit = nutrient !== 'calories' ? 'g' : '';//Vérifier si le nutriment est calorie, si non ajout de g sinon ce sera une chaine vide
+            updateElementText(element, `${value}${unit}`);
+        });
     };
 
     const loadTotals = () => {

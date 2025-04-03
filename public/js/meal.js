@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mealForm = document.getElementById('mealForm');
     const mealsList = document.getElementById('mealsList');
 
-
+//Apparition du formulaire pour l'ajout des repas
     addMealBtn.addEventListener('click', () => {
         mealFormModal.style.display = 'block';
     });
@@ -26,20 +26,64 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch('/meals')
             .then(response => response.json())
             .then(meals => {
-                mealsList.innerHTML = meals.map(meal => `
+                const categorizedMeals = {
+                    calories: meals.map(meal => ({
+                        nom: meal.nomRepas,
+                        value: meal.calories
+                    })),
+                    proteines: meals.map(meal => ({
+                        nom: meal.nomRepas,
+                        value: meal.proteines
+                    })),
+                    glucides: meals.map(meal => ({
+                        nom: meal.nomRepas,
+                        value: meal.glucides
+                    })),
+                    lipides: meals.map(meal => ({
+                        nom: meal.nomRepas,
+                        value: meal.lipides
+                    }))
+                };
+
+                //Création de l'affichage des repas
+                const mealsHtml = meals.map(meal => `
                     <div class="meal-item">
                         <h3>${meal.nomRepas}</h3>
-                        <p>Calories: ${meal.calories}</p>
-                        <p>Protéines: ${meal.proteines}g</p>
-                        <p>Glucides: ${meal.glucides}g</p>
-                        <p>Lipides: ${meal.lipides}g</p>
+                        <div class="nutrition-facts">
+                            <div class="nutrition-category">
+                                <span class="category-label">Calories:</span>
+                                <span class="category-value">${meal.calories}</span>
+                            </div>
+                            <div class="nutrition-category">
+                                <span class="category-label">Protéines:</span>
+                                <span class="category-value">${meal.proteines}g</span>
+                            </div>
+                            <div class="nutrition-category">
+                                <span class="category-label">Glucides:</span>
+                                <span class="category-value">${meal.glucides}g</span>
+                            </div>
+                            <div class="nutrition-category">
+                                <span class="category-label">Lipides:</span>
+                                <span class="category-value">${meal.lipides}g</span>
+                            </div>
+                        </div>
                     </div>
                 `).join('');
+
+                mealsList.innerHTML = `
+                    <div class="meals-container">
+                        ${mealsHtml}
+                    </div>
+                `;
+
+                const style = document.createElement('style');
+                
+                document.head.appendChild(style);
             })
             .catch(error => console.error('Erreur:', error));
     }
 
-    
+    //Formulaire pour ajouter un repas
     mealForm.addEventListener('submit', (event) => {
         event.preventDefault();
         
